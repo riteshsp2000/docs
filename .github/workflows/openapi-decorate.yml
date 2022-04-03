@@ -42,7 +42,7 @@ jobs:
           token: ${{ secrets.DOCUBOT_REPO_PAT }}
 
       - name: Setup node
-        uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
+        uses: actions/setup-node@5b52f097d36d4b0b2f94ed6de710023fbb8b2236
         with:
           node-version: 16.14.x
           cache: npm
@@ -54,10 +54,10 @@ jobs:
         run: script/rest/update-files.js --decorate-only
 
       - name: Check in the decorated files
-        uses: EndBug/add-and-commit@756d9ea820f11931e591eaf57f25e0f5b903d5b2
+        uses: EndBug/add-and-commit@050a66787244b10a4874a2a5f682130263edc192
         with:
           # The arguments for the `git add` command
-          add: 'lib/rest/static/decorated'
+          add: '["lib/rest/static/apps", "lib/rest/static/decorated"]'
 
           # The message for the commit
           message: 'Add decorated OpenAPI schema files'
